@@ -1,13 +1,14 @@
-package com.company;
+package com.company.Persistens_Niveau3;
 
-import com.company.ConnectionConfig;
+import com.company.Logik_Niveau2.TerminalInput;
+import com.company.Persistens_Niveau3.ConnectionConfig;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mapper {
-    public static void opdaterNavn() {
+    static void opdaterNavn() {
         udskrivNavne();
         String sql = "update  Navne set Navne = ? where idNavne = ?";
 
@@ -17,7 +18,7 @@ public class Mapper {
 
             // det er det her jeg søger på.
             String kundeNavn = TerminalInput.getString("angiv et nyt navn");
-            ps.setString(1,kundeNavn);
+            ps.setString(1, kundeNavn);
             ps.setInt(2, TerminalInput.getInt("skriv et tal"));
 
 
@@ -26,8 +27,7 @@ public class Mapper {
             if (res > 0) {
 
                 System.out.println("Kunden med navnet " + "\"" + kundeNavn + "\"" + " er nu blevet opdateret");
-            }
-            else {
+            } else {
                 System.out.println("en kunde med det nr fandtes ikke i listen ");
             }
 
@@ -38,7 +38,7 @@ public class Mapper {
         udskrivNavne();
     }
 
-    public static void slet() {
+    static void slet() {
         udskrivNavne();
         String sql = "delete from Navne where navne = ?";
 
@@ -66,7 +66,7 @@ public class Mapper {
         udskrivNavne();
     }
 
-    public static void indsætNavne() {
+    static void indsætNavne() {
         String sql = "INSERT INTO Navne (navne) VALUES (?)";
 
         // se lige try-with-resources f.eks. her  https://www.baeldung.com/java-try-with-resources
@@ -90,7 +90,7 @@ public class Mapper {
         }
     }
 
-    public static void udskrivNavne() {
+    static void udskrivNavne() {
         List<String> kundeList = new ArrayList<>();
 
         String sql1 = "select * from Navne ";
@@ -109,9 +109,6 @@ public class Mapper {
                 for (String s : kundeList) {
                     System.out.println(s);
 
-                }
-                for (String s : kundeList) {
-                    System.out.println(s);
                 }
             }
         } catch (SQLException e) {

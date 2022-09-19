@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Logik_Niveau2;
 
 import java.util.Scanner;
 

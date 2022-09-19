@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.Logik_Niveau2.TerminalInput;
+import com.company.Persistens_Niveau3.Facade;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,6 +11,7 @@ public class Main {
 //        System.out.println(connection);
 //
 //
+
         String svar;
 
         while (true) {
@@ -15,25 +19,21 @@ public class Main {
 
             switch (svar) {
                 case "opret":
-                    Mapper.indsætNavne();
+                    Facade.opretBruger();
                     break;
                 case "udskriv":
-                    Mapper.udskrivNavne();
+                    Facade.udskrivBrugere();
                     break;
                 case "slet":
-                    Mapper.slet();
+                    Facade.sletBruger();
                     break;
                 case "opdater":
-                    Mapper.opdaterNavn();
+                    Facade.opdaterBruger();
                     break;
                 default:
                     System.out.println("den fangede jeg sgu ikke lige");
             }
         }
-
-
-
-
     }
 
 }
